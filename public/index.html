@@ -1,0 +1,2019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Agentimate - The Agent Who Animates Your Ideas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    :root {
+      --primary: #7C3AED;
+      --primary-dark: #6D28D9;
+      --secondary: #F59E0B;
+      --dark: #0F0F0F;
+      --light: #F9FAFB;
+      --gray: #6B7280;
+      --card-bg: #1A1A1A;
+      --hover-bg: #2A2A2A;
+      --border-color: #333333;
+    }
+    
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Inter', sans-serif;
+      background-color: var(--dark);
+      color: var(--light);
+      line-height: 1.6;
+    }
+    
+    .container {
+      max-width: 1200px;
+      margin: 0 auto;
+      padding: 0 2rem;
+    }
+    
+    header {
+      padding: 1.5rem 0;
+    }
+    
+    nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .logo {
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+      text-decoration: none;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    
+    .logo-icon {
+      color: var(--primary);
+    }
+    
+    .nav-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .nav-links a {
+      color: var(--light);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      color: var(--primary);
+    }
+    
+    .auth-buttons {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .btn {
+      padding: 0.5rem 1.25rem;
+      border-radius: 0.375rem;
+      font-weight: 500;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-decoration: none;
+    }
+    
+    .btn-outline {
+      border: 1px solid var(--primary);
+      color: var(--primary);
+      background: transparent;
+    }
+    
+    .btn-outline:hover {
+      background-color: var(--primary);
+      color: var(--light);
+    }
+    
+    .btn-primary {
+      background-color: var(--primary);
+      color: white;
+      border: none;
+    }
+    
+    .btn-primary:hover {
+      background-color: var(--primary-dark);
+    }
+    
+    .hero {
+      padding: 6rem 0;
+      text-align: center;
+      background-color: var(--dark);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .hero::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: radial-gradient(circle at center, rgba(124, 58, 237, 0.1) 0%, rgba(15, 15, 15, 0) 70%);
+      z-index: 0;
+    }
+    
+    .hero-content {
+      max-width: 800px;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .hero h1 {
+      font-size: 3.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      line-height: 1.2;
+    }
+    
+    .hero p {
+      font-size: 1.25rem;
+      color: var(--gray);
+      margin-bottom: 2.5rem;
+    }
+    
+    .hero-buttons {
+      display: flex;
+      gap: 1rem;
+      justify-content: center;
+    }
+    
+    .hero-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 1;
+    }
+    
+    .dot {
+      position: absolute;
+      border-radius: 50%;
+      background-color: var(--primary);
+      opacity: 0.2;
+    }
+    
+    .features {
+      padding: 6rem 0;
+      background-color: rgba(124, 58, 237, 0.05);
+    }
+    
+    .section-header {
+      text-align: center;
+      margin-bottom: 4rem;
+    }
+    
+    .section-header h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+    }
+    
+    .section-header p {
+      font-size: 1.125rem;
+      color: var(--gray);
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .features-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+    }
+    
+    .feature-card {
+      background-color: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      border: 1px solid var(--border-color);
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 15px rgba(0, 0, 0, 0.4);
+      background-color: var(--hover-bg);
+    }
+    
+    .feature-icon {
+      width: 3rem;
+      height: 3rem;
+      background-color: rgba(124, 58, 237, 0.1);
+      border-radius: 0.5rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 1.5rem;
+      color: var(--primary);
+      font-size: 1.5rem;
+    }
+    
+    .feature-card h3 {
+      font-size: 1.25rem;
+      margin-bottom: 1rem;
+    }
+    
+    .feature-card p {
+      color: var(--gray);
+    }
+    
+    .cta {
+      background-color: var(--card-bg);
+      padding: 5rem 0;
+      text-align: center;
+      border-top: 1px solid var(--border-color);
+      border-bottom: 1px solid var(--border-color);
+    }
+    
+    .cta-content {
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .cta h2 {
+      font-size: 2.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+    }
+    
+    .cta p {
+      font-size: 1.125rem;
+      color: var(--gray);
+      margin-bottom: 2.5rem;
+    }
+    
+    .demo-container {
+      position: relative;
+      width: 100%;
+      max-width: 800px;
+      height: 400px;
+      margin: 4rem auto;
+      border-radius: 0.5rem;
+      overflow: hidden;
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .demo-animation {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .demo-element {
+      position: absolute;
+      background-color: var(--primary);
+      border-radius: 4px;
+    }
+    
+    .svg-container {
+      position: relative;
+      width: 100%;
+      height: 100%;
+    }
+    
+    .path-animation {
+      fill: none;
+      stroke-width: 2;
+    }
+    
+    footer {
+      background-color: var(--card-bg);
+      padding: 4rem 0 2rem;
+      border-top: 1px solid var(--border-color);
+    }
+    
+    .footer-content {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .footer-links {
+      display: flex;
+      gap: 2rem;
+    }
+    
+    .footer-links a {
+      color: var(--gray);
+      text-decoration: none;
+      transition: color 0.3s ease;
+    }
+    
+    .footer-links a:hover {
+      color: var(--primary);
+    }
+    
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+    
+    .social-links a {
+      color: var(--gray);
+      font-size: 1.25rem;
+      transition: color 0.3s ease;
+    }
+    
+    .social-links a:hover {
+      color: var(--primary);
+    }
+    
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.5rem;
+      }
+      
+      .nav-links {
+        display: none;
+      }
+      
+      .footer-content {
+        flex-direction: column;
+        gap: 2rem;
+      }
+    }
+    
+    .idea-input-container {
+      background-color: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin-bottom: 3rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+      max-width: 800px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    .idea-prompt {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+      font-size: 1.1rem;
+    }
+    
+    .prompt-icon {
+      font-size: 1.5rem;
+    }
+    
+    .input-wrapper {
+      display: flex;
+      margin-top: 1rem;
+      background-color: var(--hover-bg);
+      border-radius: 0.5rem;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+      width: 100%;
+    }
+    
+    .idea-input {
+      flex: 1;
+      padding: 1rem;
+      border: none;
+      background-color: transparent;
+      color: var(--light);
+      font-size: 1rem;
+      outline: none;
+    }
+    
+    .idea-examples {
+      font-size: 0.9rem;
+      color: var(--gray);
+    }
+    
+    .example {
+      color: var(--primary);
+      cursor: pointer;
+      transition: all 0.2s ease;
+    }
+    
+    .example:hover {
+      text-decoration: underline;
+    }
+    
+    .ai-thinking {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      background-color: rgba(17, 24, 39, 0.9);
+      z-index: 10;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s ease;
+    }
+    
+    .ai-thinking.active {
+      opacity: 1;
+      pointer-events: all;
+    }
+    
+    .thinking-animation {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    
+    .thinking-animation span {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      animation: pulse 1.5s infinite ease-in-out;
+    }
+    
+    .thinking-animation .dot-1 {
+      animation-delay: 0s;
+    }
+    
+    .thinking-animation .dot-2 {
+      animation-delay: 0.2s;
+    }
+    
+    .thinking-animation .dot-3 {
+      animation-delay: 0.4s;
+    }
+    
+    @keyframes pulse {
+      0%, 100% {
+        transform: scale(0.8);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+    
+    .ai-explanation {
+      max-width: 800px;
+      margin: 2rem auto 0;
+      padding: 1.5rem;
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 0.5rem;
+      text-align: left;
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 0.5s ease;
+    }
+    
+    .ai-explanation.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    .ai-explanation h3 {
+      margin-bottom: 1rem;
+      font-size: 1.25rem;
+    }
+    
+    .explanation-steps {
+      padding-left: 1.5rem;
+    }
+    
+    .explanation-steps li {
+      margin-bottom: 0.75rem;
+    }
+    
+    .explanation-steps strong {
+      color: var(--primary);
+    }
+    
+    .ai-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      background-color: rgba(124, 58, 237, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 2rem;
+      padding: 0.5rem 1rem;
+      margin-bottom: 1.5rem;
+      font-weight: 500;
+    }
+    
+    .ai-icon {
+      font-size: 1.25rem;
+    }
+    
+    .idea-to-animation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 1rem;
+      margin-top: 3rem;
+      padding: 1rem;
+      background-color: rgba(255, 255, 255, 0.03);
+      border-radius: 0.5rem;
+    }
+    
+    .idea-bubble {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 0.75rem 1.25rem;
+      position: relative;
+      font-style: italic;
+      color: var(--light);
+      max-width: 250px;
+    }
+    
+    .idea-bubble:after {
+      content: '';
+      position: absolute;
+      right: -10px;
+      top: 50%;
+      transform: translateY(-50%);
+      border-width: 10px 0 10px 10px;
+      border-style: solid;
+      border-color: transparent transparent transparent rgba(255, 255, 255, 0.1);
+    }
+    
+    .arrow {
+      font-size: 1.5rem;
+      color: var(--primary);
+      font-weight: bold;
+    }
+    
+    .animation-result {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 0.5rem;
+      padding: 1rem;
+      width: 150px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .animation-preview {
+      background-color: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      margin-top: 2rem;
+      height: 400px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+    }
+    
+    .butterfly-wing {
+      position: absolute;
+      width: 30px;
+      height: 40px;
+      background-color: #9C59B6;
+      border-radius: 50% 50% 0 50%;
+      top: 10px;
+    }
+    
+    .butterfly-wing.left {
+      left: 0;
+      transform-origin: right center;
+      animation: flapLeft 1s infinite ease-in-out;
+    }
+    
+    .butterfly-wing.right {
+      right: 0;
+      transform: scaleX(-1);
+      transform-origin: left center;
+      animation: flapRight 1s infinite ease-in-out;
+    }
+    
+    .butterfly-body {
+      position: absolute;
+      width: 6px;
+      height: 40px;
+      background-color: #8E44AD;
+      left: 50%;
+      top: 10px;
+      transform: translateX(-50%);
+      border-radius: 3px;
+    }
+    
+    @keyframes flapLeft {
+      0%, 100% { transform: rotateY(0deg); }
+      50% { transform: rotateY(-60deg); }
+    }
+    
+    @keyframes flapRight {
+      0%, 100% { transform: scaleX(-1) rotateY(0deg); }
+      50% { transform: scaleX(-1) rotateY(-60deg); }
+    }
+    
+    .animation-result:before {
+      content: '';
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: rgba(255, 255, 255, 0.3);
+      border-radius: 50%;
+      left: 20%;
+      top: 20%;
+      animation: floatAround 5s infinite linear;
+    }
+    
+    .animation-result:after {
+      content: '';
+      position: absolute;
+      width: 15px;
+      height: 5px;
+      background-color: rgba(124, 237, 58, 0.3);
+      border-radius: 5px;
+      right: 25%;
+      bottom: 15%;
+      animation: floatAround 7s infinite linear reverse;
+    }
+    
+    @keyframes floatAround {
+      0% { transform: translate(0, 0); }
+      25% { transform: translate(20px, 10px); }
+      50% { transform: translate(10px, 20px); }
+      75% { transform: translate(-10px, 10px); }
+      100% { transform: translate(0, 0); }
+    }
+    
+    .testimonials {
+      padding: 6rem 0;
+      background-color: rgba(17, 24, 39, 0.5);
+    }
+    
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+      gap: 2rem;
+      margin-bottom: 4rem;
+    }
+    
+    .testimonial-card {
+      background-color: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      border: 1px solid var(--border-color);
+    }
+    
+    .quote-icon {
+      font-size: 4rem;
+      line-height: 1;
+      color: var(--primary);
+      opacity: 0.2;
+      position: absolute;
+      top: 1rem;
+      left: 1rem;
+    }
+    
+    .testimonial-content {
+      position: relative;
+      z-index: 2;
+      margin-bottom: 1.5rem;
+    }
+    
+    .testimonial-content p {
+      font-style: italic;
+      color: var(--light);
+    }
+    
+    .testimonial-author {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      position: relative;
+      z-index: 2;
+    }
+    
+    .author-avatar {
+      width: 3rem;
+      height: 3rem;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-weight: 600;
+    }
+    
+    .author-info h4 {
+      font-size: 1rem;
+      margin-bottom: 0.25rem;
+    }
+    
+    .author-info p {
+      font-size: 0.875rem;
+      color: var(--gray);
+    }
+    
+    .testimonial-animation {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      z-index: 1;
+      opacity: 0.05;
+      pointer-events: none;
+    }
+    
+    .animation-dot {
+      position: absolute;
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background-color: var(--primary);
+      top: var(--top);
+      left: var(--left);
+      animation: pulseDot 3s infinite ease-in-out;
+      animation-delay: var(--delay);
+    }
+    
+    @keyframes pulseDot {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(2);
+        opacity: 1;
+      }
+    }
+    
+    .animation-line {
+      position: absolute;
+      width: 100%;
+      height: 2px;
+      background: linear-gradient(90deg, transparent, var(--primary), transparent);
+      top: 50%;
+      animation: moveLine 3s infinite ease-in-out;
+    }
+    
+    @keyframes moveLine {
+      0% {
+        transform: translateY(-50px) scaleX(0.1);
+        opacity: 0;
+      }
+      50% {
+        transform: translateY(0) scaleX(1);
+        opacity: 0.5;
+      }
+      100% {
+        transform: translateY(50px) scaleX(0.1);
+        opacity: 0;
+      }
+    }
+    
+    .animation-circle {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      border: 2px solid var(--primary);
+      border-radius: 50%;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      animation: expandCircle 4s infinite ease-out;
+    }
+    
+    @keyframes expandCircle {
+      0% {
+        transform: translate(-50%, -50%) scale(0);
+        opacity: 0.8;
+      }
+      100% {
+        transform: translate(-50%, -50%) scale(2);
+        opacity: 0;
+      }
+    }
+    
+    /* Responsive Animation Styles */
+    .responsive-animation-container {
+      position: relative;
+      width: 100%;
+      height: 400px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      padding-top: 0;
+      margin: 2rem 0;
+      perspective: 1000px;
+      overflow: visible;
+    }
+    
+    .app-component {
+      width: 100%;
+      max-width: 320px;
+      height: 220px;
+      background-color: #222;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+      transition: all 0.3s ease;
+      margin: 0 auto;
+      position: relative;
+      z-index: 2;
+      transform-origin: center center;
+      top: 0;
+      transform: translateY(0);
+    }
+    
+    .component-header {
+      height: 50px;
+      background-color: #7B68EE;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 0 15px;
+      border-radius: 12px 12px 0 0;
+    }
+    
+    .component-title {
+      font-weight: 600;
+      color: white;
+      font-size: 0.95rem;
+    }
+    
+    .component-actions {
+      display: flex;
+      gap: 8px;
+    }
+    
+    .component-action {
+      width: 24px;
+      height: 24px;
+      border-radius: 6px;
+      background-color: rgba(255, 255, 255, 0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .component-action:hover {
+      background-color: rgba(255, 255, 255, 0.3);
+    }
+    
+    .component-body {
+      padding: 25px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+      background-color: #222;
+    }
+    
+    .text-line {
+      height: 14px;
+      width: 100%;
+      background-color: #333;
+      border-radius: 6px;
+      transition: all 0.3s ease;
+    }
+    
+    .text-line.short {
+      width: 70%;
+    }
+    
+    .component-footer {
+      padding: 20px 25px;
+      display: flex;
+      justify-content: center;
+      background-color: #222;
+    }
+    
+    .component-button {
+      width: 120px;
+      height: 36px;
+      border-radius: 6px;
+      background-color: #7B68EE;
+      transition: all 0.3s ease;
+    }
+    
+    .component-button:hover {
+      background-color: #6A5ACD;
+      transform: translateY(-2px);
+    }
+    
+    .mobile-component {
+      position: absolute;
+      width: 180px;
+      height: 320px;
+      background-color: #222;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.4);
+      overflow: hidden;
+      opacity: 0;
+      z-index: 1;
+      transition: all 0.3s ease;
+      transform-origin: center center;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+    }
+    
+    .mobile-component .app-component {
+      width: 100%;
+      height: 100%;
+      max-width: none;
+      border-radius: 0;
+      box-shadow: none;
+      top: 0;
+      transform: none;
+    }
+    
+    .mobile-component .component-header {
+      height: 40px;
+      padding: 0 10px;
+    }
+    
+    .mobile-component .component-body {
+      padding: 20px;
+    }
+    
+    .mobile-component .text-line {
+      height: 12px;
+    }
+    
+    .mobile-component .component-footer {
+      padding: 15px;
+    }
+    
+    .mobile-component .component-button {
+      width: 100px;
+      height: 32px;
+    }
+    
+    .brands {
+      text-align: center;
+    }
+    
+    .brands p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    
+    .brand-logos {
+      display: flex;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 2rem;
+    }
+    
+    .brand-logo {
+      color: var(--gray);
+      font-weight: 600;
+      font-size: 1.25rem;
+      opacity: 0.7;
+      transition: opacity 0.3s ease;
+    }
+    
+    .brand-logo:hover {
+      opacity: 1;
+      color: var(--light);
+    }
+    
+    .how-it-works {
+      padding: 6rem 0;
+      background-color: rgba(124, 58, 237, 0.03);
+    }
+    
+    .process-steps {
+      max-width: 900px;
+      margin: 0 auto;
+    }
+    
+    .process-step {
+      display: flex;
+      margin-bottom: 4rem;
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    
+    .step-number {
+      flex-shrink: 0;
+      width: 3rem;
+      height: 3rem;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 700;
+      color: var(--light);
+      margin-right: 2rem;
+      margin-top: 0.5rem;
+    }
+    
+    .step-content {
+      flex: 1;
+    }
+    
+    .step-content h3 {
+      font-size: 1.5rem;
+      margin-bottom: 0.75rem;
+    }
+    
+    .step-content p {
+      color: var(--gray);
+      margin-bottom: 1.5rem;
+    }
+    
+    .step-illustration {
+      background-color: rgba(255, 255, 255, 0.05);
+      border-radius: 0.5rem;
+      padding: 2rem;
+      height: 150px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+    
+    .text-bubble {
+      background-color: rgba(255, 255, 255, 0.1);
+      border-radius: 1rem;
+      padding: 1rem;
+      max-width: 300px;
+      position: relative;
+    }
+    
+    .pulse-dot {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      bottom: 2rem;
+      right: 2rem;
+      animation: pulse 2s infinite;
+    }
+    
+    .ai-brain {
+      position: relative;
+      width: 100px;
+      height: 100px;
+      border: 2px solid rgba(124, 58, 237, 0.3);
+      border-radius: 50%;
+    }
+    
+    .brain-particle {
+      position: absolute;
+      width: 8px;
+      height: 8px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      animation: moveParticle 3s infinite linear;
+    }
+    
+    .brain-particle:nth-child(1) {
+      top: 20%;
+      left: 20%;
+      animation-delay: 0s;
+    }
+    
+    .brain-particle:nth-child(2) {
+      top: 70%;
+      left: 30%;
+      animation-delay: 0.5s;
+    }
+    
+    .brain-particle:nth-child(3) {
+      top: 40%;
+      left: 80%;
+      animation-delay: 1s;
+    }
+    
+    .brain-particle:nth-child(4) {
+      top: 80%;
+      left: 70%;
+      animation-delay: 1.5s;
+    }
+    
+    .brain-particle:nth-child(5) {
+      top: 30%;
+      left: 50%;
+      animation-delay: 2s;
+    }
+    
+    .brain-connections {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(124, 58, 237, 0.1) 0%, rgba(124, 58, 237, 0) 70%);
+      animation: pulse 2s infinite;
+    }
+    
+    @keyframes moveParticle {
+      0% {
+        transform: translate(0, 0);
+      }
+      25% {
+        transform: translate(10px, 10px);
+      }
+      50% {
+        transform: translate(0, 20px);
+      }
+      75% {
+        transform: translate(-10px, 10px);
+      }
+      100% {
+        transform: translate(0, 0);
+      }
+    }
+    
+    .generating-animation {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      gap: 2rem;
+    }
+    
+    .gen-element {
+      position: relative;
+    }
+    
+    .gen-element.butterfly {
+      width: 60px;
+      height: 60px;
+    }
+    
+    .gen-element.logo {
+      width: 50px;
+      height: 50px;
+      background-color: var(--primary);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--light);
+      font-weight: 700;
+      font-size: 1.5rem;
+      animation: rotateLogo 3s infinite linear;
+    }
+    
+    @keyframes rotateLogo {
+      0% {
+        transform: rotate(0deg);
+      }
+      100% {
+        transform: rotate(360deg);
+      }
+    }
+    
+    .gen-arrow {
+      font-size: 2rem;
+      color: var(--primary);
+      animation: pulseArrow 2s infinite;
+    }
+    
+    @keyframes pulseArrow {
+      0%, 100% {
+        transform: scale(1);
+        opacity: 0.5;
+      }
+      50% {
+        transform: scale(1.2);
+        opacity: 1;
+      }
+    }
+    
+    .export-formats {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      justify-content: center;
+    }
+    
+    .format {
+      padding: 0.5rem 1rem;
+      background-color: rgba(124, 58, 237, 0.1);
+      border: 1px solid rgba(124, 58, 237, 0.3);
+      border-radius: 0.25rem;
+      font-weight: 600;
+      color: var(--primary);
+      animation: highlight 5s infinite;
+      animation-delay: calc(var(--i, 0) * 1s);
+    }
+    
+    .format:nth-child(1) { --i: 0; }
+    .format:nth-child(2) { --i: 1; }
+    .format:nth-child(3) { --i: 2; }
+    .format:nth-child(4) { --i: 3; }
+    
+    @keyframes highlight {
+      0%, 100% {
+        background-color: rgba(124, 58, 237, 0.1);
+      }
+      50% {
+        background-color: rgba(124, 58, 237, 0.3);
+      }
+    }
+    
+    .tech-details {
+      margin-top: 5rem;
+      text-align: center;
+    }
+    
+    .tech-details h3 {
+      margin-bottom: 2rem;
+      font-size: 1.75rem;
+    }
+    
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 2rem;
+    }
+    
+    .tech-item {
+      background-color: rgba(255, 255, 255, 0.03);
+      border-radius: 0.5rem;
+      padding: 1.5rem;
+      transition: transform 0.3s ease;
+    }
+    
+    .tech-item:hover {
+      transform: translateY(-5px);
+      background-color: rgba(255, 255, 255, 0.05);
+    }
+    
+    .tech-item h4 {
+      color: var(--primary);
+      margin-bottom: 0.75rem;
+    }
+    
+    .tech-item p {
+      color: var(--gray);
+      font-size: 0.95rem;
+    }
+    
+    .pricing-card {
+      background-color: var(--card-bg);
+      border-radius: 0.75rem;
+      padding: 2.5rem 2rem;
+      box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      border: 1px solid var(--border-color);
+    }
+    
+    .pricing-card.featured {
+      background-color: var(--hover-bg);
+      border: 1px solid var(--primary);
+      transform: scale(1.05);
+      position: relative;
+      z-index: 1;
+    }
+    
+    .faq-item {
+      background-color: var(--card-bg);
+      border-radius: 0.75rem;
+      margin-bottom: 1rem;
+      overflow: hidden;
+      border: 1px solid var(--border-color);
+    }
+    
+    .faq-question {
+      padding: 1.5rem;
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-weight: 600;
+      transition: background-color 0.3s ease;
+    }
+    
+    .faq-question:hover {
+      background-color: var(--hover-bg);
+    }
+    
+    .nav-mobile {
+      display: none;
+      color: var(--light);
+      font-size: 1.5rem;
+      cursor: pointer;
+    }
+    
+    .mobile-menu {
+      position: fixed;
+      top: 0;
+      right: -100%;
+      width: 80%;
+      max-width: 300px;
+      height: 100vh;
+      background-color: var(--dark);
+      z-index: 1000;
+      padding: 2rem;
+      transition: right 0.3s ease;
+      display: flex;
+      flex-direction: column;
+      border-left: 1px solid var(--border-color);
+    }
+    
+    .nav-links a.active {
+      color: var(--primary);
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="container">
+      <nav>
+        <a href="#" class="logo">
+          <span class="logo-icon">✨</span>
+          <span>agentimate</span>
+        </a>
+        <div class="nav-links">
+          <a href="#features">Features</a>
+          <a href="#how-it-works">How It Works</a>
+          <a href="#demo">Demo</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="auth-buttons">
+          <a href="#" class="btn btn-outline">Sign In</a>
+          <a href="#" class="btn btn-primary">Sign Up</a>
+        </div>
+      </nav>
+    </div>
+  </header>
+  
+  <section class="hero">
+    <div class="hero-animation" id="heroAnimation"></div>
+    <div class="container">
+      <div class="hero-content">
+        <div class="ai-badge">
+          <span class="ai-icon">🧠</span>
+          <span>Powered by AI</span>
+        </div>
+        <h1 class="hero-title">Think it. Say it. Animate it.</h1>
+        <p class="hero-subtitle">Agentimate transforms your ideas into stunning animations using advanced AI. Just describe what you want, and watch your imagination come to life in seconds.</p>
+        <div class="hero-buttons">
+          <a href="#demo" class="btn btn-primary">Try It Now</a>
+          <a href="#features" class="btn btn-outline">See How It Works</a>
+        </div>
+        <div class="idea-to-animation">
+          <div class="idea-bubble">
+            "A butterfly flying through a garden"
+          </div>
+          <div class="arrow">→</div>
+          <div class="animation-result">
+            <div class="animation-preview">
+              <div class="butterfly-wing left"></div>
+              <div class="butterfly-body"></div>
+              <div class="butterfly-wing right"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="features" id="features">
+    <div class="container">
+      <div class="section-header">
+        <h2>Features</h2>
+        <p>Everything you need to create stunning animations without design skills</p>
+      </div>
+      
+      <div class="features-grid">
+        <div class="feature-card">
+          <div class="feature-icon">💬</div>
+          <h3>Text-to-Animation</h3>
+          <p>Simply describe what you want, and our AI will create it for you.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">⚡</div>
+          <h3>Instant Results</h3>
+          <p>Get professional-quality animations in seconds, not hours.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🎨</div>
+          <h3>Style Control</h3>
+          <p>Choose from various animation styles or let our AI suggest the best fit.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔄</div>
+          <h3>Unlimited Revisions</h3>
+          <p>Not quite right? Refine your idea and regenerate until it's perfect.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">📱</div>
+          <h3>Multi-platform</h3>
+          <p>Create animations for social media, presentations, websites, and more.</p>
+        </div>
+        <div class="feature-card">
+          <div class="feature-icon">🔌</div>
+          <h3>Easy Integration</h3>
+          <p>Export your animations in multiple formats for seamless integration with your projects.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <section class="demo" id="demo">
+    <div class="container">
+      <div class="section-header">
+        <h2>See Agentimate in Action</h2>
+        <p>Just describe what you want to animate, and our AI will bring it to life instantly</p>
+      </div>
+      
+      <div class="idea-input-container">
+        <div class="idea-prompt">
+          <span class="prompt-icon">💡</span>
+          <span>Type your animation idea below:</span>
+        </div>
+        <div class="input-wrapper">
+          <input type="text" id="ideaInput" class="idea-input" placeholder="e.g., 'A butterfly flying across a garden'" value="">
+          <button id="animateButton" class="btn btn-primary">Animate It!</button>
+        </div>
+        <div class="idea-examples">
+          <p>Try: <span class="example" data-idea="A rocket launching into space">A rocket launching</span> • 
+          <span class="example" data-idea="Particles forming a logo">Particles forming a logo</span> • 
+          <span class="example" data-idea="A heart beating with colorful waves">Beating heart</span></p>
+        </div>
+      </div>
+      
+      <div class="demo-container">
+        <div class="ai-thinking" id="aiThinking">
+          <div class="thinking-animation">
+            <span class="dot-1"></span>
+            <span class="dot-2"></span>
+            <span class="dot-3"></span>
+          </div>
+          <p>AI is processing your idea...</p>
+        </div>
+        <div class="demo-animation" id="demoAnimation">
+          <div class="responsive-animation-container">
+            <div class="app-component desktop-component">
+              <div class="component-header">
+                <div class="component-title">User Profile</div>
+                <div class="component-actions">
+                  <span class="component-action"></span>
+                  <span class="component-action"></span>
+                </div>
+              </div>
+              <div class="component-body">
+                <div class="text-line"></div>
+                <div class="text-line short"></div>
+                <div class="text-line"></div>
+                <div class="text-line short"></div>
+              </div>
+              <div class="component-footer">
+                <div class="component-button"></div>
+              </div>
+            </div>
+            <div class="mobile-component">
+              <div class="app-component">
+                <div class="component-header">
+                  <div class="component-title">User Profile</div>
+                  <div class="component-actions">
+                    <span class="component-action"></span>
+                  </div>
+                </div>
+                <div class="component-body">
+                  <div class="text-line"></div>
+                  <div class="text-line short"></div>
+                  <div class="text-line"></div>
+                </div>
+                <div class="component-footer">
+                  <div class="component-button"></div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="ai-explanation" id="aiExplanation">
+        <h3>How the AI created this animation:</h3>
+        <ol class="explanation-steps">
+          <li><strong>Analyzed the component structure</strong> to identify responsive design patterns</li>
+          <li><strong>Created a seamless morphing transition</strong> between desktop and mobile layouts</li>
+          <li><strong>Applied fluid transformations</strong> to illustrate the component adaptation</li>
+          <li><strong>Optimized component hierarchy</strong> for consistent user experience across platforms</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+  
+  <section class="cta">
+    <div class="container">
+      <div class="cta-content">
+        <h2>Ready to Animate Your Ideas?</h2>
+        <p>Join thousands of creators who are bringing their concepts to life with Agentimate.</p>
+        <a href="#signup" class="btn btn-primary">Get Started for Free</a>
+      </div>
+    </div>
+  </section>
+  
+  <section class="testimonials">
+    <div class="container">
+      <div class="section-header">
+        <h2>What Our Users Are Saying</h2>
+        <p>Creators from around the world are transforming their ideas with Agentimate</p>
+      </div>
+      
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p>I used to spend hours creating animations for my marketing videos. With Agentimate, I just describe what I want and get professional results in seconds. It's like having an animation studio in my pocket!</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background-color: #3498DB;">
+              <span>SJ</span>
+            </div>
+            <div class="author-info">
+              <h4>Sarah Johnson</h4>
+              <p>Marketing Director</p>
+            </div>
+          </div>
+          <div class="testimonial-animation">
+            <div class="animation-dot" style="--delay: 0s; --top: 20%; --left: 80%;"></div>
+            <div class="animation-dot" style="--delay: 0.5s; --top: 60%; --left: 30%;"></div>
+            <div class="animation-dot" style="--delay: 1s; --top: 40%; --left: 50%;"></div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p>As a UX designer, I need to quickly prototype animations to test user interactions. Agentimate has revolutionized my workflow. I can iterate on ideas 10x faster than before.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background-color: #E74C3C;">
+              <span>DT</span>
+            </div>
+            <div class="author-info">
+              <h4>David Torres</h4>
+              <p>Senior UX Designer</p>
+            </div>
+          </div>
+          <div class="testimonial-animation">
+            <div class="animation-line"></div>
+          </div>
+        </div>
+        
+        <div class="testimonial-card">
+          <div class="testimonial-content">
+            <div class="quote-icon">"</div>
+            <p>I have zero animation experience, but I needed custom animations for my startup's website. Agentimate made it possible for me to create professional animations without hiring an expensive animator.</p>
+          </div>
+          <div class="testimonial-author">
+            <div class="author-avatar" style="background-color: #27AE60;">
+              <span>ML</span>
+            </div>
+            <div class="author-info">
+              <h4>Michelle Lee</h4>
+              <p>Founder, TechStart</p>
+            </div>
+          </div>
+          <div class="testimonial-animation">
+            <div class="animation-circle"></div>
+          </div>
+        </div>
+      </div>
+      
+      <div class="brands">
+        <p>Trusted by innovative teams at</p>
+        <div class="brand-logos">
+          <div class="brand-logo">Acme Inc.</div>
+          <div class="brand-logo">TechGiant</div>
+          <div class="brand-logo">Startup.io</div>
+          <div class="brand-logo">DesignCo</div>
+          <div class="brand-logo">CreativeStudio</div>
+        </div>
+      </div>
+    </div>
+  </section>
+  
+  <footer>
+    <div class="container">
+      <div class="footer-content">
+        <a href="#" class="logo">
+          <span class="logo-icon">✨</span>
+          <span>agentimate</span>
+        </a>
+        <div class="footer-links">
+          <a href="#features">Features</a>
+          <a href="#pricing">Pricing</a>
+          <a href="#blog">Blog</a>
+          <a href="#contact">Contact</a>
+        </div>
+        <div class="social-links">
+          <a href="#" aria-label="Twitter">𝕏</a>
+          <a href="#" aria-label="LinkedIn">in</a>
+          <a href="#" aria-label="GitHub">⌨️</a>
+          <a href="#" aria-label="Discord">💬</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="lib/anime.min.js"></script>
+  <script>
+    // Hero Animation - Floating Dots
+    const heroAnimation = document.getElementById('heroAnimation');
+    const dotsCount = 50;
+    
+    for (let i = 0; i < dotsCount; i++) {
+      const dot = document.createElement('div');
+      dot.classList.add('dot');
+      
+      // Random size between 5px and 20px
+      const size = anime.random(5, 20);
+      dot.style.width = `${size}px`;
+      dot.style.height = `${size}px`;
+      
+      // Random position
+      dot.style.left = `${anime.random(0, 100)}%`;
+      dot.style.top = `${anime.random(0, 100)}%`;
+      
+      heroAnimation.appendChild(dot);
+    }
+    
+    // Initialize component animations on page load
+    function initializeComponentAnimations() {
+      const desktopComponent = document.querySelector('.desktop-component');
+      const mobileComponent = document.querySelector('.mobile-component');
+      
+      if (!desktopComponent || !mobileComponent) return;
+      
+      // Reset any existing animations
+      anime.remove(desktopComponent);
+      anime.remove(mobileComponent);
+      
+      // Make sure mobile component is initially hidden
+      mobileComponent.style.visibility = 'hidden';
+      desktopComponent.style.visibility = 'visible';
+      
+      // Initialize components
+      anime.set(desktopComponent, {
+        scale: 1,
+        opacity: 1,
+        filter: 'blur(0px)'
+      });
+      
+      anime.set(mobileComponent, {
+        opacity: 0,
+        filter: 'blur(5px)'
+      });
+      
+      // Add subtle animations to profile components
+      const profileElements = {
+        textLines: document.querySelectorAll('.text-line'),
+        button: document.querySelectorAll('.component-button')
+      };
+      
+      // Reset any existing animations
+      anime.remove(profileElements.textLines);
+      anime.remove(profileElements.button);
+      
+      // Animate text lines with subtle effects
+      anime({
+        targets: profileElements.textLines,
+        width: function(el) {
+          return el.classList.contains('short') ? 
+            ['70%', '60%', '70%'] : 
+            ['100%', '95%', '100%'];
+        },
+        opacity: [1, 0.8, 1],
+        delay: anime.stagger(150),
+        duration: 2000,
+        easing: 'easeInOutSine',
+        loop: true
+      });
+      
+      anime({
+        targets: profileElements.button,
+        backgroundColor: [
+          'rgb(123, 104, 238)',
+          'rgb(106, 90, 205)',
+          'rgb(123, 104, 238)'
+        ],
+        translateY: [0, -2, 0],
+        duration: 2000,
+        easing: 'easeInOutSine',
+        loop: true
+      });
+      
+      // Create timeline for smooth morphing animation
+      const morphTimeline = anime.timeline({
+        easing: 'easeInOutQuad',
+        loop: true,
+        autoplay: true
+      });
+      
+      // Add desktop to mobile transition
+      morphTimeline
+        .add({
+          targets: desktopComponent,
+          scale: [1, 0.85],
+          translateY: [0, 5],
+          opacity: [1, 0],
+          filter: ['blur(0px)', 'blur(5px)'],
+          easing: 'easeInOutSine',
+          duration: 800,
+          delay: 2000,
+          complete: function() {
+            desktopComponent.style.visibility = 'hidden';
+          }
+        })
+        .add({
+          targets: mobileComponent,
+          opacity: [0, 1],
+          filter: ['blur(5px)', 'blur(0px)'],
+          easing: 'easeInOutSine',
+          duration: 800,
+          begin: function() {
+            mobileComponent.style.visibility = 'visible';
+          }
+        }, '-=600')
+        .add({
+          targets: mobileComponent,
+          opacity: [1, 0],
+          filter: ['blur(0px)', 'blur(5px)'],
+          easing: 'easeInOutSine',
+          duration: 800,
+          delay: 2000,
+          complete: function() {
+            mobileComponent.style.visibility = 'hidden';
+          }
+        })
+        .add({
+          targets: desktopComponent,
+          scale: [0.85, 1],
+          translateY: [5, 0],
+          opacity: [0, 1],
+          filter: ['blur(5px)', 'blur(0px)'],
+          easing: 'easeInOutSine',
+          duration: 800,
+          begin: function() {
+            desktopComponent.style.visibility = 'visible';
+          }
+        }, '-=600');
+    }
+    
+    // Call the initialization function when the page loads
+    document.addEventListener('DOMContentLoaded', initializeComponentAnimations);
+    
+    // Animate dots
+    anime({
+      targets: '.dot',
+      translateX: function() {
+        return anime.random(-50, 50) + 'px';
+      },
+      translateY: function() {
+        return anime.random(-50, 50) + 'px';
+      },
+      scale: function() {
+        return anime.random(0.8, 1.5);
+      },
+      opacity: function() {
+        return anime.random(0.2, 0.5);
+      },
+      easing: 'easeInOutQuad',
+      duration: function() {
+        return anime.random(3000, 5000);
+      },
+      delay: function() {
+        return anime.random(0, 1000);
+      },
+      direction: 'alternate',
+      loop: true
+    });
+    
+    // Hero text animation
+    const heroTitle = document.querySelector('.hero-title');
+    const heroText = heroTitle.textContent;
+    heroTitle.textContent = '';
+    
+    for (let i = 0; i < heroText.length; i++) {
+      const letter = document.createElement('span');
+      letter.textContent = heroText[i] === ' ' ? '\u00A0' : heroText[i];
+      letter.style.display = 'inline-block';
+      letter.style.opacity = 0;
+      heroTitle.appendChild(letter);
+    }
+    
+    anime({
+      targets: '.hero-title span',
+      opacity: [0, 1],
+      translateY: [20, 0],
+      easing: 'easeOutExpo',
+      duration: 1000,
+      delay: anime.stagger(50)
+    });
+    
+    // Animate feature cards
+    anime({
+      targets: '.feature-card',
+      opacity: [0, 1],
+      translateY: [20, 0],
+      easing: 'easeOutExpo',
+      duration: 800,
+      delay: anime.stagger(150)
+    });
+    
+    // Default explanation for responsive design animation
+    const responsiveAnimationExplanation = [
+      '<strong>Analyzed the component structure</strong> to identify responsive design patterns',
+      '<strong>Created a seamless morphing transition</strong> between desktop and mobile layouts',
+      '<strong>Applied fluid transformations</strong> to illustrate the component adaptation',
+      '<strong>Optimized component hierarchy</strong> for consistent user experience across platforms'
+    ];
+    
+    // Initialize explanation
+    const explanationList = document.querySelector('.explanation-steps');
+    explanationList.innerHTML = '';
+    
+    responsiveAnimationExplanation.forEach(step => {
+      const li = document.createElement('li');
+      li.innerHTML = step;
+      explanationList.appendChild(li);
+    });
+    
+    // Example button click handlers
+    const exampleButtons = document.querySelectorAll('.example');
+    exampleButtons.forEach(button => {
+      button.addEventListener('click', function() {
+        const idea = this.getAttribute('data-idea');
+        document.getElementById('ideaInput').value = idea;
+        document.getElementById('animateButton').click();
+      });
+    });
+    
+    // Animate button click handler
+    document.getElementById('animateButton').addEventListener('click', function() {
+      const ideaInput = document.getElementById('ideaInput');
+      const idea = ideaInput.value.trim();
+      
+      if (!idea) {
+        alert('Please enter an animation idea first!');
+        return;
+      }
+      
+      // Show thinking animation
+      document.getElementById('aiThinking').classList.add('active');
+      document.getElementById('aiExplanation').classList.remove('active');
+      
+      // Clear previous animation and set up responsive animation
+      const demoAnimation = document.getElementById('demoAnimation');
+      demoAnimation.innerHTML = '<div class="responsive-animation-container"><div class="app-component desktop-component"><div class="component-header"><div class="component-title">User Profile</div><div class="component-actions"><span class="component-action"></span><span class="component-action"></span></div></div><div class="component-body"><div class="text-line"></div><div class="text-line short"></div><div class="text-line"></div><div class="text-line short"></div></div><div class="component-footer"><div class="component-button"></div></div></div><div class="mobile-component"><div class="app-component"><div class="component-header"><div class="component-title">User Profile</div><div class="component-actions"><span class="component-action"></span></div></div><div class="component-body"><div class="text-line"></div><div class="text-line short"></div><div class="text-line"></div></div><div class="component-footer"><div class="component-button"></div></div></div></div></div></div>';
+      
+      // Initialize the animations
+      initializeComponentAnimations();
+      
+      // Simulate AI processing time
+      setTimeout(() => {
+        // Hide thinking animation
+        document.getElementById('aiThinking').classList.remove('active');
+        
+        // Customize animation based on input
+        const lowerIdea = idea.toLowerCase();
+        
+        // Update component title based on idea
+        const componentTitles = document.querySelectorAll('.component-title');
+        let componentName = 'User Profile';
+        
+        if (lowerIdea.includes('dashboard')) {
+          componentName = 'Dashboard';
+        } else if (lowerIdea.includes('gallery') || lowerIdea.includes('photo')) {
+          componentName = 'Photo Gallery';
+        } else if (lowerIdea.includes('chat') || lowerIdea.includes('message')) {
+          componentName = 'Chat App';
+        } else if (lowerIdea.includes('map') || lowerIdea.includes('location')) {
+          componentName = 'Map View';
+        } else if (lowerIdea.includes('shop') || lowerIdea.includes('store')) {
+          componentName = 'Shop';
+        }
+        
+        componentTitles.forEach(title => {
+          title.textContent = componentName;
+        });
+        
+        // Update explanation
+        const explanationList = document.querySelector('.explanation-steps');
+        explanationList.innerHTML = '';
+        
+        const customExplanation = [
+          `<strong>Analyzed "${idea}"</strong> to identify key component requirements`,
+          `<strong>Created a "${componentName}" component</strong> optimized for both desktop and mobile`,
+          '<strong>Applied responsive design principles</strong> to ensure consistent functionality',
+          '<strong>Demonstrated device transition</strong> to visualize cross-platform adaptability'
+        ];
+        
+        customExplanation.forEach(step => {
+          const li = document.createElement('li');
+          li.innerHTML = step;
+          explanationList.appendChild(li);
+        });
+        
+        // Show explanation
+        setTimeout(() => {
+          aiExplanation.classList.add('active');
+        }, 500);
+        
+      }, 2000); // Simulate 2 seconds of "AI thinking"
+    });
+
+    // Animate butterfly in hero section
+    anime({
+      targets: '.animation-preview',
+      translateY: ['0px', '-10px', '0px'],
+      duration: 3000,
+      easing: 'easeInOutQuad',
+      loop: true
+    });
+
+    // Animate testimonial cards on scroll
+    const testimonialCards = document.querySelectorAll('.testimonial-card');
+    
+    const observerOptions = {
+      threshold: 0.1,
+      rootMargin: '0px 0px -50px 0px'
+    };
+    
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          anime({
+            targets: entry.target,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            easing: 'easeOutExpo',
+            duration: 800,
+            delay: 300
+          });
+          observer.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    testimonialCards.forEach(card => {
+      card.style.opacity = 0;
+      observer.observe(card);
+    });
+
+    // Animate process steps on scroll
+    const processSteps = document.querySelectorAll('.process-step');
+    
+    const stepsObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry, index) => {
+        if (entry.isIntersecting) {
+          anime({
+            targets: entry.target,
+            opacity: [0, 1],
+            translateY: [20, 0],
+            easing: 'easeOutExpo',
+            duration: 800,
+            delay: 300 + (index * 200)
+          });
+          stepsObserver.unobserve(entry.target);
+        }
+      });
+    }, observerOptions);
+    
+    processSteps.forEach(step => {
+      stepsObserver.observe(step);
+    });
+  </script>
+</body>
+</html> 

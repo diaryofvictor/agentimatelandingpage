@@ -1,9 +1,9 @@
 {
-  "name": "animejs",
+  "name": "agentimatelandingpage",
   "version": "3.2.2",
   "homepage": "http://animejs.com",
-  "repository": "juliangarnier/anime",
-  "description": "JavaScript animation engine",
+  "repository": "diaryofvictor/agentimatelandingpage",
+  "description": "Agentimate Landing Page",
   "umd:main": "lib/anime.min.js",
   "module": "lib/anime.es.js",
   "main": "lib/anime.js",
@@ -14,10 +14,11 @@
     "lib"
   ],
   "scripts": {
-    "build": "node build"
+    "build": "node build",
+    "vercel-build": "cp -r public ."
   },
   "bugs": {
-    "url": "https://github.com/juliangarnier/anime/issues"
+    "url": "https://github.com/diaryofvictor/agentimatelandingpage/issues"
   },
   "keywords": [
     "anime",
