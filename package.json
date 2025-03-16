@@ -14,8 +14,7 @@
     "lib"
   ],
   "scripts": {
-    "build": "node build",
-    "vercel-build": "cp -r public ."
+    "build": "echo 'No build step needed'"
   },
   "bugs": {
     "url": "https://github.com/diaryofvictor/agentimatelandingpage/issues"
